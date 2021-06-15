@@ -1,0 +1,9 @@
+package in.aorder.qr.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/qrs")
+public class QrCodeController {
+}

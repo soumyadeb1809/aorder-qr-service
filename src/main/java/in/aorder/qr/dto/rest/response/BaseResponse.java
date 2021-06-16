@@ -1,4 +1,4 @@
-package in.aorder.qr.dto;
+package in.aorder.qr.dto.rest.response;
 
 import in.aorder.qr.model.ResponseMessage;
 import lombok.Getter;

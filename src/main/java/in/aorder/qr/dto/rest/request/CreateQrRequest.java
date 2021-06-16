@@ -1,4 +1,4 @@
-package in.aorder.qr.dto;
+package in.aorder.qr.dto.rest.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class DeleteResourceResponse extends BaseResponse {
-    Integer id;
+public class CreateQrRequest {
+
 }

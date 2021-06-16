@@ -1,4 +1,4 @@
-package in.aorder.qr.dto;
+package in.aorder.qr.dto.rest.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

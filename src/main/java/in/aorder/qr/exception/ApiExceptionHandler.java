@@ -1,7 +1,7 @@
 package in.aorder.qr.exception;
 
 
-import in.aorder.qr.dto.ErrorResponse;
+import in.aorder.qr.dto.rest.response.ErrorResponse;
 import in.aorder.qr.model.ResponseMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

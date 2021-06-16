@@ -1,4 +1,4 @@
-package in.aorder.qr.dto;
+package in.aorder.qr.dto.rest.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ResourceListResponse<T> extends BaseResponse {
+public class ResourceListResponse<T> extends PageResponse {
     private List<T> data;
 }

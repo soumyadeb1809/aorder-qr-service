@@ -13,10 +13,10 @@ import java.awt.image.BufferedImage;
 public class ZXingQrCodeGenerator implements QrCodeGenerator {
 
     @Value("${qr.width}")
-    private static String WIDTH = "200";
+    private String WIDTH;
 
     @Value("${qr.height}")
-    private static String HEIGHT = "200";
+    private String HEIGHT;
 
     public BufferedImage generate(String text) throws WriterException {
         QRCodeWriter barcodeWriter = new QRCodeWriter();

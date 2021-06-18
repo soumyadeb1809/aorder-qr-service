@@ -37,7 +37,7 @@ public class QrCodeServiceImpl implements QrCodeService {
     @Autowired
     private QrCodeRepository qrCodeRepo;
 
-    @Value("")
+    @Value("firebase.storage.qr.directory")
     private static String QR_CODES_DIRECTORY;
 
     @Override
@@ -50,7 +50,7 @@ public class QrCodeServiceImpl implements QrCodeService {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ImageIO.write(image, "png", bos);
             byte [] data = bos.toByteArray();
-            String fileName = QR_CODES_DIRECTORY + "/" + CommonUtil.generateUUID("qr_");
+            String fileName = QR_CODES_DIRECTORY + "/" + CommonUtil.generateUUID("qr_") + ".png";
             String downloadUrl = fileUploader.upload(data, fileName);
 
             EntityBuilder.build(qrCode, request.getMetadata(), downloadUrl);

@@ -17,7 +17,9 @@ public class QrCodeController {
     private QrCodeService qrCodeService;
 
     @PostMapping
-    public CreateResourceResponse createQrCode(CreateQrCodeRequest request) {
+    public CreateResourceResponse createQrCode(
+            @RequestBody CreateQrCodeRequest request
+    ) {
         CreateResourceResponse response = new CreateResourceResponse();
 
         Integer id = qrCodeService.createQrCode(request);

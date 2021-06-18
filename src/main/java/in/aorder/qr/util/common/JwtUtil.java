@@ -1,4 +1,4 @@
-package in.aorder.qr.util;
+package in.aorder.qr.util.common;
 
 import io.jsonwebtoken.*;
 import org.apache.logging.log4j.LogManager;

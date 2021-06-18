@@ -1,4 +1,9 @@
 package in.aorder.qr.repository;
 
-public interface QrCodeRepository {
+import in.aorder.qr.entity.QrCode;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface QrCodeRepository extends JpaRepository<QrCode, Integer> {
 }

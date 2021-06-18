@@ -23,7 +23,7 @@ public class QrCode extends BaseEntity {
     @Column(name = "metadata", nullable = false)
     private String metadata;
 
-    @Column(name = "image_path")
-    private String imagePath;
+    @Column(name = "image_url")
+    private String imageUrl;
 
 }

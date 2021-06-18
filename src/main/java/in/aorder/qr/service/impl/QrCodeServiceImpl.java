@@ -1,22 +1,27 @@
 package in.aorder.qr.service.impl;
 
 import in.aorder.qr.dto.common.QrCodeDto;
-import in.aorder.qr.dto.rest.request.CreateQrRequest;
+import in.aorder.qr.dto.rest.request.CreateQrCodeRequest;
 import in.aorder.qr.entity.QrCode;
+import in.aorder.qr.exception.ResourceNotFoundException;
 import in.aorder.qr.repository.QrCodeRepository;
 import in.aorder.qr.service.QrCodeService;
 import in.aorder.qr.util.common.CommonUtil;
+import in.aorder.qr.util.common.DtoFactory;
+import in.aorder.qr.util.common.EntityBuilder;
 import in.aorder.qr.util.fileupload.FileUploadProvider;
 import in.aorder.qr.util.qrcode.QrCodeGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 public class QrCodeServiceImpl implements QrCodeService {
@@ -32,21 +37,23 @@ public class QrCodeServiceImpl implements QrCodeService {
     @Autowired
     private QrCodeRepository qrCodeRepo;
 
+    @Value("")
+    private static String QR_CODES_DIRECTORY;
+
     @Override
-    public Integer createQrCode(CreateQrRequest request) {
+    public Integer createQrCode(CreateQrCodeRequest request) {
 
         QrCode qrCode = new QrCode();
 
         try {
-            BufferedImage image = generateQrCode(request.getMetaData());
+            BufferedImage image = generateQrCode(request.getMetadata());
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ImageIO.write(image, "png", bos);
             byte [] data = bos.toByteArray();
-            String downloadUrl = fileUploader.upload(data, CommonUtil.generateUUID("qr_"));
+            String fileName = QR_CODES_DIRECTORY + "/" + CommonUtil.generateUUID("qr_");
+            String downloadUrl = fileUploader.upload(data, fileName);
 
-            qrCode.setMetadata(request.getMetaData());
-            qrCode.setImagePath(downloadUrl);
-
+            EntityBuilder.build(qrCode, request.getMetadata(), downloadUrl);
             qrCodeRepo.save(qrCode);
             LOG.info("Created QrCode Id: " + qrCode.getId());
         }
@@ -79,6 +86,22 @@ public class QrCodeServiceImpl implements QrCodeService {
     public QrCodeDto getQrCode(Integer id) {
 
         QrCodeDto qrCodeDto = null;
+
+        try {
+            Optional<QrCode> qrCodeOp = qrCodeRepo.findById(id);
+
+            if(!qrCodeOp.isPresent()) {
+                throw new ResourceNotFoundException("Filed to find QrCode with Id: " + id);
+            }
+
+            qrCodeDto = DtoFactory.createQrCodeDto(qrCodeOp.get());
+        }
+        catch (ResourceNotFoundException e) {
+            throw e;
+        }
+        catch (Exception e) {
+            LOG.error("Failed to get QrCode Id: " + id, e);
+        }
 
         return qrCodeDto;
     }

@@ -1,7 +1,7 @@
 package in.aorder.qr.service;
 
 import in.aorder.qr.dto.common.QrCodeDto;
-import in.aorder.qr.dto.rest.request.CreateQrRequest;
+import in.aorder.qr.dto.rest.request.CreateQrCodeRequest;
 
 public interface QrCodeService {
 
@@ -11,7 +11,7 @@ public interface QrCodeService {
      * @param request dto
      * @return Id of the created QrCode
      */
-    Integer createQrCode(CreateQrRequest request);
+    Integer createQrCode(CreateQrCodeRequest request);
 
     /**
      * Service to get an existing QrCode.

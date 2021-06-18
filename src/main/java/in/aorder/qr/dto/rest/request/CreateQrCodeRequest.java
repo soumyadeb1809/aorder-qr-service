@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CreateQrRequest {
-    private String metaData;
+public class CreateQrCodeRequest {
+    private String metadata;
 }

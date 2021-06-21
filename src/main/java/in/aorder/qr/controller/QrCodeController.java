@@ -4,7 +4,7 @@ import in.aorder.qr.dto.common.QrCodeDto;
 import in.aorder.qr.dto.rest.request.CreateQrCodeRequest;
 import in.aorder.qr.dto.rest.response.CreateResourceResponse;
 import in.aorder.qr.dto.rest.response.ResourceResponse;
-import in.aorder.qr.model.ResponseMessage;
+import in.aorder.qr.constant.ResponseMessage;
 import in.aorder.qr.service.QrCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

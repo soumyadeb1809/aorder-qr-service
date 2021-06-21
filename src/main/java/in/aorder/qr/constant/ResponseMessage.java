@@ -1,4 +1,4 @@
-package in.aorder.qr.model;
+package in.aorder.qr.constant;
 
 public class ResponseMessage {
     public static final String SUCCESS = "success";

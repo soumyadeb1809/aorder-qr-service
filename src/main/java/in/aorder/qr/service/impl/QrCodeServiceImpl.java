@@ -23,6 +23,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Optional;
 
+import static in.aorder.qr.constant.PropertyKey.Firebase;
+
 @Service
 public class QrCodeServiceImpl implements QrCodeService {
 
@@ -37,8 +39,8 @@ public class QrCodeServiceImpl implements QrCodeService {
     @Autowired
     private QrCodeRepository qrCodeRepo;
 
-    @Value("firebase.storage.qr.directory")
-    private static String QR_CODES_DIRECTORY;
+    @Value(Firebase.STORAGE_QR_DIRECTORY)
+    private String qrCodesDirectory;
 
     @Override
     public Integer createQrCode(CreateQrCodeRequest request) {
@@ -50,7 +52,7 @@ public class QrCodeServiceImpl implements QrCodeService {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ImageIO.write(image, "png", bos);
             byte [] data = bos.toByteArray();
-            String fileName = QR_CODES_DIRECTORY + "/" + CommonUtil.generateUUID("qr_") + ".png";
+            String fileName = qrCodesDirectory + "/" + CommonUtil.generateUUID("qr_") + ".png";
             String downloadUrl = fileUploader.upload(data, fileName);
 
             EntityBuilder.build(qrCode, request.getMetadata(), downloadUrl);

@@ -9,19 +9,21 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.awt.image.BufferedImage;
 
+import static in.aorder.qr.constant.PropertyKey.Qr;
+
 
 public class ZXingQrCodeGenerator implements QrCodeGenerator {
 
-    @Value("${qr.width}")
-    private String WIDTH;
+    @Value(Qr.WIDTH)
+    private String width;
 
-    @Value("${qr.height}")
-    private String HEIGHT;
+    @Value(Qr.HEIGHT)
+    private String height;
 
     public BufferedImage generate(String text) throws WriterException {
         QRCodeWriter barcodeWriter = new QRCodeWriter();
         BitMatrix bitMatrix =
-                barcodeWriter.encode(text, BarcodeFormat.QR_CODE, Integer.parseInt(WIDTH), Integer.parseInt(HEIGHT));
+                barcodeWriter.encode(text, BarcodeFormat.QR_CODE, Integer.parseInt(width), Integer.parseInt(height));
 
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }

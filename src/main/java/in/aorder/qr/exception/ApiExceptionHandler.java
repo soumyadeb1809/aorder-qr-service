@@ -2,7 +2,7 @@ package in.aorder.qr.exception;
 
 
 import in.aorder.qr.dto.rest.response.ErrorResponse;
-import in.aorder.qr.model.ResponseMessage;
+import in.aorder.qr.constant.ResponseMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;

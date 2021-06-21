@@ -1,6 +1,6 @@
 package in.aorder.qr.dto.rest.response;
 
-import in.aorder.qr.model.ResponseMessage;
+import in.aorder.qr.constant.ResponseMessage;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

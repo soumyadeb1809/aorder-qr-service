@@ -1,5 +1,6 @@
 package in.aorder.qr.service.impl;
 
+import in.aorder.qr.constant.PropertyKey;
 import in.aorder.qr.dto.common.QrCodeDto;
 import in.aorder.qr.dto.rest.request.CreateQrCodeRequest;
 import in.aorder.qr.entity.QrCode;
@@ -23,7 +24,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Optional;
 
-import static in.aorder.qr.constant.PropertyKey.Firebase;
 
 @Service
 public class QrCodeServiceImpl implements QrCodeService {
@@ -39,7 +39,7 @@ public class QrCodeServiceImpl implements QrCodeService {
     @Autowired
     private QrCodeRepository qrCodeRepo;
 
-    @Value(Firebase.STORAGE_QR_DIRECTORY)
+    @Value(PropertyKey.Firebase.STORAGE_QR_DIRECTORY)
     private String qrCodesDirectory;
 
     @Override

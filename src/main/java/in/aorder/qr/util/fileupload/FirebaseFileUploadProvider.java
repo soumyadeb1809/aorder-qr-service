@@ -5,6 +5,7 @@ import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
+import in.aorder.qr.constant.PropertyKey;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,19 +13,17 @@ import org.springframework.beans.factory.annotation.Value;
 import java.io.IOException;
 import java.net.URLEncoder;
 
-import static in.aorder.qr.constant.PropertyKey.Firebase;
-
 public class FirebaseFileUploadProvider implements FileUploadProvider {
 
     private static final Logger LOG = LogManager.getLogger(FirebaseFileUploadProvider.class);
 
-    @Value(Firebase.STORAGE_BUCKET)
+    @Value(PropertyKey.Firebase.STORAGE_BUCKET)
     private String bucket;
 
-    @Value(Firebase.DOWNLOAD_URL_TEMPLATE)
+    @Value(PropertyKey.Firebase.DOWNLOAD_URL_TEMPLATE)
     private String downloadUrlTemplate;
 
-    @Value(Firebase.FILE_PREFIX)
+    @Value(PropertyKey.Firebase.FILE_PREFIX)
     private String filePrefix;
 
     @Override

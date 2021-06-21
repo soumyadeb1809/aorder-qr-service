@@ -1,0 +1,48 @@
+# Server configs
+server:
+    port: 5568
+
+# Application configs
+app:
+    package:
+        base: in.aorder.qr
+        controller: ${app.package.base}.controller
+    api:
+        path-prefix: /api/qrs
+
+# Spring configs
+spring:
+    application:
+        name: qrcode-service
+    datasource:
+        password: password
+        url: jdbc:mysql://localhost:3306/qr-db
+        username: root
+
+# Eureka configs
+eureka:
+    client:
+        register-with-eureka: true
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+
+# Firebase configs
+firebase:
+    storage:
+        bucket: debase-18.appspot.com
+        file:
+            prefix: aorder/
+        qr:
+            directory: qr_codes
+        url:
+            template: https://firebasestorage.googleapis.com/v0/b/debase-18.appspot.com/o/%s?alt=media
+
+# JWT configs
+jwt:
+    secret: $0meR@nd0mBu11$h!t
+
+# QR Code configs
+qr:
+    height: 512
+    width: 512
+

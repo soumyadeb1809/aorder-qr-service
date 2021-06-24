@@ -35,7 +35,7 @@ firebase:
         qr:
             directory: qr_codes
         url:
-            template: https://firebasestorage.googleapis.com/v0/b/debase-18.appspot.com/o/%s?alt=media
+            template: https://firebasestorage.googleapis.com/v0/b/${firebase.storage.bucket}/o/%s?alt=media
 
 # JWT configs
 jwt:

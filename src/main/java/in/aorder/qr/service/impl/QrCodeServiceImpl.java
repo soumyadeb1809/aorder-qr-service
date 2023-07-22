@@ -43,7 +43,7 @@ public class QrCodeServiceImpl implements QrCodeService {
     private String qrCodesDirectory;
 
     @Override
-    public Integer createQrCode(CreateQrCodeRequest request) {
+    public QrCodeDto createQrCode(CreateQrCodeRequest request) {
 
         QrCode qrCode = new QrCode();
 
@@ -63,7 +63,7 @@ public class QrCodeServiceImpl implements QrCodeService {
             LOG.error("Failed to create QR code", e);
         }
 
-        return qrCode.getId();
+        return DtoFactory.createQrCodeDto(qrCode);
     }
 
     /**

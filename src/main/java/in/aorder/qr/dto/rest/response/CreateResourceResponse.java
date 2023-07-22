@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CreateResourceResponse extends BaseResponse {
+public class CreateResourceResponse<T> extends BaseResponse {
     private Integer id;
+    private T data;
 }

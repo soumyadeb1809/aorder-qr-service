@@ -9,9 +9,9 @@ public interface QrCodeService {
      * Service to create a new QrCode.
      *
      * @param request dto
-     * @return Id of the created QrCode
+     * @return {@link QrCodeDto} of the created QrCode
      */
-    Integer createQrCode(CreateQrCodeRequest request);
+    QrCodeDto createQrCode(CreateQrCodeRequest request);
 
     /**
      * Service to get an existing QrCode.

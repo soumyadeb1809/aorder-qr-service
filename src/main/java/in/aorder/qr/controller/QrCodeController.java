@@ -17,18 +17,17 @@ public class QrCodeController {
     private QrCodeService qrCodeService;
 
     @PostMapping
-    public CreateResourceResponse createQrCode(
+    public CreateResourceResponse<QrCodeDto> createQrCode(
             @RequestBody CreateQrCodeRequest request
     ) {
-        CreateResourceResponse response = new CreateResourceResponse();
+        CreateResourceResponse<QrCodeDto> response = new CreateResourceResponse<>();
 
-        Integer id = qrCodeService.createQrCode(request);
-        response.setId(id);
-
-        if(id != null) {
+        QrCodeDto qrCode = qrCodeService.createQrCode(request);
+        if(qrCode != null) {
             response.setMessage(ResponseMessage.SUCCESS);
+            response.setId(qrCode.getId());
+            response.setData(qrCode);
         }
-
         return response;
     }
 
@@ -44,7 +43,6 @@ public class QrCodeController {
         if(qrCode != null) {
             response.setMessage(ResponseMessage.SUCCESS);
         }
-
         return response;
     }
 }
